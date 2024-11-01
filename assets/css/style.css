@@ -538,6 +538,20 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     margin: 0 auto;
 }
 /*-------------------------------------
+        courses
+--------------------------------------*/
+
+#courses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+/*-------------------------------------
         8. Profiles
 --------------------------------------*/
 .profiles {
