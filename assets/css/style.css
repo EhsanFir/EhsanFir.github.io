@@ -517,6 +517,27 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 
 .experience-time-responsive{display: none;}
 /*-------------------------------------
+        publications
+--------------------------------------*/
+
+#publications {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.section-heading {
+    text-align: center;
+}
+
+.resume-item {
+    text-align: center;
+    margin: 0 auto;
+}
+/*-------------------------------------
         8. Profiles
 --------------------------------------*/
 .profiles {
