@@ -926,7 +926,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
         content: '';
         position: absolute;
         width: 6px;
-        background-color: #007BFF;
+      
         top: 0;
         bottom: 0;
         left: 50%;
