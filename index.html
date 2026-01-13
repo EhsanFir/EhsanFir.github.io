@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ehsan Firouzi, Software Security, Secure Coding">
     <meta name="author" content="Ehsan Firouzi">
     <title>Ehsan Firouzi | Security Researcher</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -29,22 +29,18 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background: var(--white);
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        /* Navigation */
+        /* Navigation - Original Style */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             z-index: 1000;
@@ -58,59 +54,52 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--dark);
+            color: var(--gray);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: color 0.3s;
-            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--primary);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
+        /* Hero Section - With Background Image Style */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(rgba(59, 89, 152, 0.7), rgba(59, 89, 152, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%233b5998" width="1200" height="800"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             position: relative;
             overflow: hidden;
             padding-top: 80px;
@@ -123,13 +112,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></svg>');
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            from { transform: translateY(0); }
-            to { transform: translateY(-100px); }
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .hero-content {
@@ -140,16 +123,30 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
             animation: fadeInUp 0.8s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 .comma {
+            color: var(--accent);
+        }
+
+        .hero h1 .dot {
+            color: var(--accent);
         }
 
         .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            opacity: 0.95;
             animation: fadeInUp 0.8s ease 0.2s both;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         @keyframes fadeInUp {
@@ -177,62 +174,56 @@
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--dark);
             margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
+            text-transform: lowercase;
+            font-weight: 400;
         }
 
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-
-        /* About Section */
+        /* About Section - Original Style */
         .about {
-            background: var(--light);
+            background: var(--white);
+            padding: 5rem 0;
         }
 
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: center;
+            align-items: start;
+        }
+
+        .about-text {
+            padding-right: 2rem;
         }
 
         .about-text h3 {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             line-height: 1.8;
-            color: var(--gray);
+            color: var(--dark);
             margin-bottom: 2rem;
+            font-weight: 400;
         }
 
         .about-info {
-            background: white;
+            background: var(--light);
             padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            margin-top: 2rem;
         }
 
         .about-info h4 {
-            color: var(--primary);
+            color: var(--dark);
             margin-bottom: 0.5rem;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .about-info p {
-            color: var(--dark);
-            font-weight: 500;
+            color: var(--gray);
+            font-weight: 400;
+            font-size: 0.95rem;
         }
 
         .about-image {
@@ -241,47 +232,63 @@
 
         .profile-card {
             background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            border-radius: 0;
             text-align: center;
         }
 
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
+        .profile-img-wrapper {
+            width: 100%;
+            height: auto;
             margin-bottom: 1.5rem;
-            border: 4px solid var(--primary);
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .profile-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .social-section {
+            background: #3b5998;
+            padding: 2rem;
+            border-radius: 0 0 8px 8px;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 1.5rem;
         }
 
         .social-links a {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: var(--light);
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid white;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary);
+            color: white;
             transition: all 0.3s;
+            font-size: 1.2rem;
         }
 
         .social-links a:hover {
-            background: var(--primary);
-            color: white;
+            background: white;
+            color: #3b5998;
             transform: translateY(-3px);
         }
 
         /* Experience Timeline */
+        .experience {
+            background: var(--white);
+            padding: 5rem 0;
+        }
+
         .timeline {
             position: relative;
             padding-left: 3rem;
@@ -345,6 +352,7 @@
         /* Publications */
         .publications {
             background: var(--light);
+            padding: 5rem 0;
         }
 
         .year-group {
@@ -417,6 +425,11 @@
         }
 
         /* Services */
+        .services {
+            background: white;
+            padding: 5rem 0;
+        }
+
         .service-item {
             background: white;
             padding: 1.5rem;
@@ -438,6 +451,7 @@
         /* Teaching */
         .teaching {
             background: var(--light);
+            padding: 5rem 0;
         }
 
         .semester-group {
@@ -479,6 +493,7 @@
         .contact {
             background: var(--dark);
             color: white;
+            padding: 5rem 0;
         }
 
         .contact .section-header h2 {
@@ -534,7 +549,7 @@
             }
 
             .hero .subtitle {
-                font-size: 1.125rem;
+                font-size: 1rem;
             }
 
             .about-content {
@@ -552,7 +567,7 @@
             right: 2rem;
             width: 50px;
             height: 50px;
-            background: var(--primary);
+            background: #a855f7;
             color: white;
             border-radius: 50%;
             display: flex;
@@ -569,8 +584,8 @@
         }
 
         .scroll-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
+            background: #9333ea;
+            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -593,8 +608,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Hi, I am Ehsan Firouzi</h1>
-            <p class="subtitle">Software Security Researcher at DIGIT Research Center</p>
+            <h1>HI<span class="comma">,</span> I AM<br>EHSAN<br>FIROUZI<span class="dot">.</span></h1>
+            <p class="subtitle">SOFTWARE SECURITY RESEARCHER AT DIGIT RESEARCH CENTER</p>
         </div>
     </section>
 
@@ -602,7 +617,7 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2>About Me</h2>
+                <h2>about me</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -614,13 +629,15 @@
                 </div>
                 <div class="about-image">
                     <div class="profile-card">
-                        <div style="width: 200px; height: 200px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; border: 4px solid var(--primary);">
-                            <i class="fas fa-user" style="font-size: 80px; color: white;"></i>
+                        <div class="profile-img-wrapper">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect fill='%234a5568' width='400' height='500'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-size='40' font-family='Arial'%3EProfile Photo%3C/text%3E%3C/svg%3E" alt="Ehsan Firouzi">
                         </div>
-                        <div class="social-links">
-                            <a href="https://scholar.google.com/citations?user=i0vw-QgAAAAJ&hl=en"><i class="fab fa-google"></i></a>
-                            <a href="https://x.com/Ehsan01300894"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.linkedin.com/in/ehsan-firouzi-0a0747167/"><i class="fab fa-linkedin"></i></a>
+                        <div class="social-section">
+                            <div class="social-links">
+                                <a href="https://scholar.google.com/citations?user=i0vw-QgAAAAJ&hl=en" title="Google Scholar"><i class="fab fa-google"></i></a>
+                                <a href="https://x.com/Ehsan01300894" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/in/ehsan-firouzi-0a0747167/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -629,14 +646,14 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience">
+    <section id="experience" class="experience">
         <div class="container">
             <div class="section-header">
-                <h2>Experience</h2>
+                <h2>experience</h2>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2022 - Present</div>
+                    <div class="timeline-date">2022 - Now</div>
                     <h3 class="timeline-title">Secure Software Engineering Researcher</h3>
                     <p class="timeline-company">TU Clausthal (DIGIT) • Goslar, Germany</p>
                 </div>
@@ -663,7 +680,7 @@
     <section id="publications" class="publications">
         <div class="container">
             <div class="section-header">
-                <h2>Publications</h2>
+                <h2>publications</h2>
             </div>
 
             <!-- 2026 -->
@@ -744,10 +761,10 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services">
+    <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <h2>Services</h2>
+                <h2>services</h2>
             </div>
             <div class="service-item">
                 <span>MSR Junior PC 2026</span>
@@ -768,7 +785,7 @@
     <section id="teaching" class="teaching">
         <div class="container">
             <div class="section-header">
-                <h2>Teaching</h2>
+                <h2>teaching</h2>
             </div>
 
             <div class="semester-group">
@@ -805,7 +822,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Contact Me</h2>
+                <h2>contact me</h2>
             </div>
             <div class="contact-card">
                 <h3>Ehsan Firouzi</h3>
@@ -823,18 +840,4 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Ehsan Firouzi. Design enhanced with modern UI principles.</p>
-    </footer>
-
-    <!-- Scroll to Top -->
-    <div class="scroll-top" id="scrollTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            const scrollTop = document.getElementById('scrollTop');
-            
-            if (window.scrollY >
+        <p>&copy; copyright Ehsan Firouzi.
