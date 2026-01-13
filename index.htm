@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ehsan Firouzi - Software Security Researcher">
+    <meta name="keywords" content="Ehsan Firouzi, Software Security, Secure Coding">
+    <meta name="author" content="Ehsan Firouzi">
+    <title>Ehsan Firouzi | Security Researcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .about-info {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-info p {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 2rem;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--light);
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Publications */
+        .publications {
+            background: var(--light);
+        }
+
+        .year-group {
+            margin-bottom: 3rem;
+        }
+
+        .year-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .pub-type {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .publication-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .publication-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .pub-title {
+            font-size: 1.125rem;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pub-authors {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-venue {
+            color: var(--secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .pdf-link {
+            display: inline-block;
+            margin-left: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .pdf-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Services */
+        .service-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-item::before {
+            content: '•';
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* Teaching */
+        .teaching {
+            background: var(--light);
+        }
+
+        .semester-group {
+            margin-bottom: 3rem;
+        }
+
+        .academic-year {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .semester-title {
+            color: var(--secondary);
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .course-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .course-name {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .course-desc {
+            color: var(--gray);
+            font-size: 1.125rem;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact .section-header h2 {
+            color: white;
+        }
+
+        .contact-card {
+            background: var(--dark-light);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-card h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+        }
+
+        .contact-info p {
+            font-size: 1.125rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-light);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.125rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Ehsan Firouzi</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#teaching">Teaching</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hi, I am Ehsan Firouzi</h1>
+            <p class="subtitle">Software Security Researcher at DIGIT Research Center</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>I am a software engineer and security researcher, currently a researcher in the Secure Software Engineering (SSE) research group at TU Clausthal, Germany. My research interests focus on mining software repositories for security applications. I hold an M.Sc. in Information Technology Engineering with a specialization in Secure Computing from Shiraz University, obtained in 2020.</h3>
+                    <div class="about-info">
+                        <h4>Email</h4>
+                        <p>Ehsan.fir@gmail.com</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="profile-card">
+                        <div style="width: 200px; height: 200px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; border: 4px solid var(--primary);">
+                            <i class="fas fa-user" style="font-size: 80px; color: white;"></i>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://scholar.google.com/citations?user=i0vw-QgAAAAJ&hl=en"><i class="fab fa-google"></i></a>
+                            <a href="https://x.com/Ehsan01300894"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/in/ehsan-firouzi-0a0747167/"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - Present</div>
+                    <h3 class="timeline-title">Secure Software Engineering Researcher</h3>
+                    <p class="timeline-company">TU Clausthal (DIGIT) • Goslar, Germany</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 - 2022</div>
+                    <h3 class="timeline-title">Senior Software Developer & Software Developer Team</h3>
+                    <p class="timeline-company">Pars Diamond • Shiraz, Iran</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2012 - 2022</div>
+                    <h3 class="timeline-title">Software Expert & System Analyzer</h3>
+                    <p class="timeline-company">Fars Deeds and Real Estate • Shiraz, Iran</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2008 - 2010</div>
+                    <h3 class="timeline-title">Teaching C# & XML</h3>
+                    <p class="timeline-company">Noavaran Danesh Faragir Institute • Shiraz, Iran</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="publications">
+        <div class="container">
+            <div class="section-header">
+                <h2>Publications</h2>
+            </div>
+
+            <!-- 2026 -->
+            <div class="year-group">
+                <h3 class="year-title">2026</h3>
+                <h4 class="pub-type">Journal</h4>
+                <div class="publication-item">
+                    <p class="pub-title">Can generative AI detect and fix real-world cryptographic misuses? 
+                        <a href="https://www.sciencedirect.com/science/article/pii/S0164121224001808/pdfft?md5=e85cdd3cd877b283679ba9e4a5e8d5dd&pid=1-s2.0-S0164121224001808-main.pdf" class="pdf-link">PDF</a>
+                    </p>
+                    <p class="pub-authors">Ehsan Firouzi, Mohammad Ghafari</p>
+                    <p class="pub-venue">Journal of Systems and Software (JSS)</p>
+                </div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="year-group">
+                <h3 class="year-title">2024</h3>
+                <h4 class="pub-type">Journal</h4>
+                <div class="publication-item">
+                    <p class="pub-title">Time to Separate from StackOverflow and Match with ChatGPT for Encryption
+                        <a href="https://www.sciencedirect.com/science/article/pii/S0164121224001808/pdfft?md5=e85cdd3cd877b283679ba9e4a5e8d5dd&pid=1-s2.0-S0164121224001808-main.pdf" class="pdf-link">PDF</a>
+                    </p>
+                    <p class="pub-authors">Ehsan Firouzi, Mohammad Ghafari</p>
+                    <p class="pub-venue">Journal of Systems and Software (JSS)</p>
+                </div>
+
+                <h4 class="pub-type">Conference</h4>
+                <div class="publication-item">
+                    <p class="pub-title">ChatGPT's Potential in Cryptography Misuse Detection: A Comparative Analysis with Static Analysis Tools
+                        <a href="https://dl.acm.org/doi/pdf/10.1145/3674805.3695408" class="pdf-link">PDF</a>
+                    </p>
+                    <p class="pub-authors">Ehsan Firouzi, Mohammad Ghafari, Mike Ebrahimi</p>
+                    <p class="pub-venue">18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)</p>
+                </div>
+                <div class="publication-item">
+                    <p class="pub-title">From Struggle to Simplicity with a Usable and Secure API for Encryption in Java
+                        <a href="https://dl.acm.org/doi/pdf/10.1145/3674805.3695405" class="pdf-link">PDF</a>
+                    </p>
+                    <p class="pub-authors">Ehsan Firouzi, Ammar Mansuri, Mohammad Ghafari, Maziar Kaveh</p>
+                    <p class="pub-venue">18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)</p>
+                </div>
+                <div class="publication-item">
+                    <p class="pub-title">LLM Security Guard for Code
+                        <a href="https://dl.acm.org/doi/pdf/10.1145/3661167.3661263" class="pdf-link">PDF</a>
+                    </p>
+                    <p class="pub-authors">Arya Kavian, Mohammad Mehdi Pourhashem Kallehbasti, Sajjad Kazemi, Ehsan Firouzi, Mohammad Ghafari</p>
+                    <p class="pub-venue">28th International Conference on Evaluation and Assessment in Software Engineering (EASE)</p>
+                </div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="year-group">
+                <h3 class="year-title">2020</h3>
+                <h4 class="pub-type">Conference</h4>
+                <div class="publication-item">
+                    <p class="pub-title">On the use of c# unsafe code context: An empirical study of stack overflow
+                        <a href="https://dl.acm.org/doi/pdf/10.1145/3382494.3422165" class="pdf-link">PDF</a>
+                    </p>
+                    <p class="pub-authors">Ehsan Firouzi, Ashkan Sami, Foutse Khomh, Gias Uddin</p>
+                    <p class="pub-venue">14th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)</p>
+                </div>
+            </div>
+
+            <!-- 2019 -->
+            <div class="year-group">
+                <h3 class="year-title">2019</h3>
+                <h4 class="pub-type">Workshop</h4>
+                <div class="publication-item">
+                    <p class="pub-title">Visual Studio automated refactoring tool should improve development time, but ReSharper led to more solution-build failures
+                        <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8666936" class="pdf-link">PDF</a>
+                    </p>
+                    <p class="pub-authors">Ehsan Firouzi, Ashkan Sami</p>
+                    <p class="pub-venue">2019 IEEE Workshop on Mining and Analyzing Interaction Histories (MAINT) Co-located with SANER</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Services</h2>
+            </div>
+            <div class="service-item">
+                <span>MSR Junior PC 2026</span>
+            </div>
+            <div class="service-item">
+                <span>Student Volunteer at EASE 2025</span>
+            </div>
+            <div class="service-item">
+                <span>MSR Junior PC 2025</span>
+            </div>
+            <div class="service-item">
+                <span>Student Volunteer at ESEM 2024</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Section -->
+    <section id="teaching" class="teaching">
+        <div class="container">
+            <div class="section-header">
+                <h2>Teaching</h2>
+            </div>
+
+            <div class="semester-group">
+                <h3 class="academic-year">2022-2023</h3>
+                <h4 class="semester-title">Winter Semester (WS)</h4>
+                <div class="course-item">
+                    <h5 class="course-name">Secure Coding</h5>
+                    <p class="course-desc">Buffer Overflow Detection, Code Injection and Mitigation</p>
+                </div>
+                <h4 class="semester-title">Summer Semester (SS)</h4>
+                <div class="course-item">
+                    <h5 class="course-name">Secure IT Systems</h5>
+                    <p class="course-desc">Vulnerability in the Wild (Stack Overflow, GitHub, AI Generated Codes)</p>
+                </div>
+            </div>
+
+            <div class="semester-group">
+                <h3 class="academic-year">2023-2024</h3>
+                <h4 class="semester-title">Winter Semester (WS)</h4>
+                <div class="course-item">
+                    <h5 class="course-name">Secure Coding</h5>
+                    <p class="course-desc">Buffer Overflow Detection, Code Injection and Mitigation</p>
+                </div>
+                <h4 class="semester-title">Summer Semester (SS)</h4>
+                <div class="course-item">
+                    <h5 class="course-name">Secure IT Systems</h5>
+                    <p class="course-desc">Vulnerability in the Wild (Stack Overflow, GitHub, AI Generated Codes)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="contact-card">
+                <h3>Ehsan Firouzi</h3>
+                <div class="contact-info">
+                    <h4>Email</h4>
+                    <p>Ehsan.fir@gmail.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://x.com/Ehsan01300894"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/ehsan-firouzi-0a0747167"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ehsan Firouzi. Design enhanced with modern UI principles.</p>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const scrollTop = document.getElementById('scrollTop');
+            
+            if (window.scrollY >
