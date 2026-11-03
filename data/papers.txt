@@ -1,0 +1,67 @@
+# PUBLICATION CONTENT
+# Add a new block anywhere in this file. Separate entries with --- on its own line.
+# Required: year, type, title, authors, venue. Optional: pdf.
+# Supported types: Journal, Conference, Workshop. Links must use HTTPS.
+
+year: 2026
+type: Journal
+title: Can generative AI detect and fix real-world cryptographic misuses?
+authors: Ehsan Firouzi, Mohammad Ghafari
+venue: Journal of Systems and Software (JSS), Volume 232, Article 112650
+pdf: https://www.sciencedirect.com/science/article/pii/S016412122500319X
+---
+year: 2026
+type: Workshop
+title: Can Developers rely on LLMs for Secure IaC Development?
+authors: Ehsan Firouzi, Shardul Bhatt, Mohammad Ghafari
+venue: 2026 IEEE International Conference on Software Analysis, Evolution and Reengineering – Companion (SANER-C), MSR4P&S Workshop
+pdf: https://arxiv.org/pdf/2602.03648
+---
+year: 2026
+type: Workshop
+title: Persistent Human Feedback, LLMs, and Static Analyzers for Secure Code Generation and Vulnerability Detection
+authors: Ehsan Firouzi, Mohammad Ghafari
+venue: 2026 IEEE International Conference on Software Analysis, Evolution and Reengineering – Companion (SANER-C), MSR4P&S Workshop
+pdf: https://arxiv.org/pdf/2602.05868
+---
+year: 2024
+type: Journal
+title: Time to Separate from StackOverflow and Match with ChatGPT for Encryption
+authors: Ehsan Firouzi, Mohammad Ghafari
+venue: Journal of Systems and Software (JSS), Volume 216, Article 112135
+pdf: https://www.sciencedirect.com/science/article/pii/S0164121224001808
+---
+year: 2024
+type: Conference
+title: ChatGPT's Potential in Cryptography Misuse Detection: A Comparative Analysis with Static Analysis Tools
+authors: Ehsan Firouzi, Mohammad Ghafari, Mike Ebrahimi
+venue: 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)
+pdf: https://dl.acm.org/doi/pdf/10.1145/3674805.3695408
+---
+year: 2024
+type: Conference
+title: From Struggle to Simplicity with a Usable and Secure API for Encryption in Java
+authors: Ehsan Firouzi, Ammar Mansuri, Mohammad Ghafari, Maziar Kaveh
+venue: 18th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)
+pdf: https://dl.acm.org/doi/pdf/10.1145/3674805.3695405
+---
+year: 2024
+type: Conference
+title: LLM Security Guard for Code
+authors: Arya Kavian, Mohammad Mehdi Pourhashem Kallehbasti, Sajjad Kazemi, Ehsan Firouzi, Mohammad Ghafari
+venue: 28th International Conference on Evaluation and Assessment in Software Engineering (EASE)
+pdf: https://dl.acm.org/doi/pdf/10.1145/3661167.3661263
+---
+year: 2020
+type: Conference
+title: On the use of C# unsafe code context: An empirical study of Stack Overflow
+authors: Ehsan Firouzi, Ashkan Sami, Foutse Khomh, Gias Uddin
+venue: 14th ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)
+pdf: https://dl.acm.org/doi/pdf/10.1145/3382494.3422165
+---
+year: 2019
+type: Workshop
+title: Visual Studio automated refactoring tool should improve development time, but ReSharper led to more solution-build failures
+authors: Ehsan Firouzi, Ashkan Sami
+venue: 2019 IEEE Workshop on Mining and Analyzing Interaction Histories (MAINT), co-located with SANER
+pdf: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8666936

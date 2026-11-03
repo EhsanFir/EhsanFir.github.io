@@ -1,0 +1,37 @@
+# NEWS CONTENT
+# Add a new block anywhere in this file. Separate entries with --- on its own line.
+# Required: date and title. Optional: summary, tag, link, featured.
+# Date formats: YYYY, YYYY-MM, or YYYY-MM-DD. Only one item should be featured: true.
+
+date: 2026
+title: Postdoctoral researcher at TU Darmstadt
+summary: Continuing secure software engineering research with the Software Technology Group at TU Darmstadt, focusing on developer-centered approaches and tools for building secure software.
+tag: New role
+link: https://www.st.informatik.tu-darmstadt.de/people/ehsan_firouzi/
+featured: true
+---
+date: 2026
+title: Can generative AI detect and fix real-world cryptographic misuses?
+summary: A Journal of Systems and Software article, co-authored with Mohammad Ghafari, examines generative AI for real-world cryptographic misuse detection and repair.
+tag: Publication
+link: #publications
+featured: false
+---
+date: 2026
+title: MSR 2026 Junior Program Committee
+summary: Serving on the junior program committee for the International Conference on Mining Software Repositories.
+tag: Academic service
+featured: false
+---
+date: 2025
+title: Student Volunteer at EASE 2025
+summary: Supporting the International Conference on Evaluation and Assessment in Software Engineering as a student volunteer.
+tag: Community
+featured: false
+---
+date: 2024
+title: Two ESEM 2024 publications
+summary: New research explores cryptographic misuse detection with ChatGPT and a usable, secure API for encryption in Java.
+tag: Research
+link: #publications
+featured: false
